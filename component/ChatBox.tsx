@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import { getChatResponse } from "../services/openai";
+import ReactMarkdown from "react-markdown";
 
 type Message = {
   id: string;
@@ -84,13 +85,13 @@ const ChatBox: React.FC = () => {
                 }`}
               >
                 <div
-                  className={`max-w-[80%] px-4 py-2 rounded-2xl text-sm leading-relaxed ${
+                  className={`max-w-[80%] overflow-auto px-4 py-2 rounded-2xl text-sm leading-relaxed ${
                     m.role === "user"
                       ? "bg-gray-900 text-white rounded-br-md"
                       : "bg-gray-100 text-gray-900 rounded-bl-md"
                   }`}
                 >
-                  {m.text}
+                  <ReactMarkdown>{m.text}</ReactMarkdown>
                 </div>
               </div>
             ))}
