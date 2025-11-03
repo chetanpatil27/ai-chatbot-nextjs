@@ -32,7 +32,11 @@ const ChatBox: React.FC = () => {
     if (res?.error) {
       setMessages((m) => [
         ...m,
-        { id: String(Date.now()), role: "assistant", text: res.error.message },
+        {
+          id: String(Date.now()),
+          role: "assistant",
+          text: res?.error?.message,
+        },
       ]);
     } else {
       setMessages((m) => [
@@ -40,7 +44,7 @@ const ChatBox: React.FC = () => {
         {
           id: String(Date.now()),
           role: "assistant",
-          text: res.choices[0].message.content,
+          text: res?.candidates?.[0]?.content?.parts?.[0]?.text,
         },
       ]);
     }
