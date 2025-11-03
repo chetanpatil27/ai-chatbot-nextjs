@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
   const { message } = await request.json();
-  console.log("process.env.OPENAI_API_KEY", process.env.OPENAI_API_KEY);
   const res = await fetch("https://api.openai.com/v1/chat/completions", {
     method: "POST",
     headers: {
